@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Black Castle — Irish traditional instruments. Handmade in Wicklow. Coming soon." />
   <title>Black Castle — Irish Traditional Instruments</title>
@@ -37,9 +37,9 @@
           <a href="#repairs">Repairs</a>
         </nav>
 
-        <a class="logo" href="#top" aria-label="Black Castle home">
-          <img class="site-logo" src="bclogo.png" alt="Black Castle logo" />
-        </a>
+    <a class="logo" href="#top" aria-label="Black Castle home">
+  <img class="site-logo" src="bclogo.png" alt="Black Castle logo" />
+</a>
 
         <div class="navright">
           <nav class="navlinks" aria-label="Primary right" style="justify-content:flex-end;">
@@ -67,19 +67,14 @@
 
   <!-- Hero -->
   <section class="hero" id="top">
-    <div class="strap">HANDMADE IN WICKLOW • COMING SOON</div>
+  <div class="strap">HANDMADE IN WICKLOW • COMING SOON</div>
 
-    <div class="heroCarousel">
-      <img src="bc1.jpg" class="active" alt="Black Castle instrument 1">
-      <img src="bc2.png" alt="Black Castle instrument 2">
-    </div>
+  <img class="heroImg" src="bc.jpg" alt="Black Castle hero image">
 
-   
-
-    <div class="heroTitle">
-
-    </div>
-  </section>
+  <div class="heroTitle">
+    
+  </div>
+</section>
   <!-- Content -->
   <main>
     <div class="container">
@@ -215,17 +210,6 @@
       });
     });
   </script>
-
-   <script>
-      const slides = document.querySelectorAll('.heroCarousel img');
-      let index = 0;
-
-      setInterval(() => {
-        slides[index].classList.remove('active');
-        index = (index + 1) % slides.length;
-        slides[index].classList.add('active');
-      }, 6000); // 4 seconds per image
-    </script>
 
   <!--
     HOW TO ADD A REAL HERO IMAGE:

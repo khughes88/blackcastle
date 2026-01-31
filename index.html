@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Black Castle Irish Traditional Instruments — Coming soon. Handmade in Wicklow." />
+  <title>Black Castle — Irish Traditional Instruments (Coming Soon)</title>
+
+  <style>
+    :root{
+      --bg: #07080b;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --line: rgba(255,255,255,.14);
+      --accent: #c8a15a; /* warm brass/gold */
+      --accent2:#63d6c5; /* subtle teal */
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 15% 10%, rgba(200,161,90,.20), transparent 60%),
+                  radial-gradient(900px 500px at 85% 20%, rgba(99,214,197,.14), transparent 60%),
+                  radial-gradient(1100px 700px at 50% 100%, rgba(255,255,255,.05), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* Soft animated grain */
+    .grain{
+      pointer-events:none;
+      position:fixed;
+      inset:0;
+      opacity:.08;
+      mix-blend-mode: overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      animation: drift 8s linear infinite;
+    }
+    @keyframes drift{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(-2%,1%,0)}
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: clamp(22px, 4vw, 54px);
+    }
+
+    .card{
+      width:min(980px, 100%);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* top accent line */
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(200,161,90,.85), rgba(99,214,197,.75), transparent);
+      opacity:.9;
+    }
+
+    .inner{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(18px, 3vw, 34px);
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    @media (max-width: 880px){
+      .inner{grid-template-columns:1fr}
+    }
+
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .mark{
+      width:46px; height:46px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(200,161,90,.35), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(99,214,197,.20), transparent 60%),
+        rgba(255,255,255,.04);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .mark svg{opacity:.92}
+    .brand h1{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .brand p{
+      margin:3px 0 0;
+      color:var(--muted);
+      font-size: 13px;
+      letter-spacing:.05em;
+    }
+
+    .hero{
+      margin-top: 18px;
+    }
+    .hero h2{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height:1.04;
+      letter-spacing:-.02em;
+    }
+    .hero h2 .accent{
+      background: linear-gradient(90deg, var(--accent), rgba(255,255,255,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.55vw, 18px);
+      line-height:1.6;
+      max-width: 58ch;
+    }
+
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 16px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding:9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      display:flex;
+      gap:8px;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px; height:8px;
+      border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(200,161,90,.12);
+    }
+
+    .side{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: calc(var(--radius) - 6px);
+      padding: 18px;
+      position:relative;
+    }
+    .side h3{
+      margin: 2px 0 10px;
+      font-size: 14px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.82);
+    }
+
+    .info{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+      font-size: 14px;
+    }
+
+    .form{
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .form input{
+      flex: 1 1 220px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      padding: 12px 12px;
+      color: var(--text);
+      outline:none;
+    }
+    .form input::placeholder{color: rgba(255,255,255,.45)}
+    .btn{
+      flex: 0 0 auto;
+      border-radius: 14px;
+      border: 1px solid rgba(200,161,90,.45);
+      background: linear-gradient(180deg, rgba(200,161,90,.22), rgba(200,161,90,.10));
+      padding: 12px 14px;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing:.02em;
+      cursor:pointer;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(200,161,90,.75)}
+    .btn:active{transform: translateY(0px)}
+
+    .links{
+      margin-top: 14px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .links a{
+      color: rgba(255,255,255,.78);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(255,255,255,.22);
+    }
+    .links a:hover{border-bottom-color: rgba(200,161,90,.65); color: var(--text)}
+
+    .footer{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+    }
+    .tiny{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .flag{
+      width:10px;height:10px;border-radius:99px;
+      background: linear-gradient(90deg, #169b62 0 33%, #fff 33% 66%, #ff883e 66% 100%);
+      border:1px solid rgba(255,255,255,.20);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Black Castle Coming Soon">
+      <div class="inner">
+        <div>
+          <div class="brand">
+            <div class="mark" aria-hidden="true">
+              <!-- Simple “castle-ish” mark -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 10V6h3v2h6V6h3v4" stroke="white" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 10h14v10H5V10Z" stroke="white" stroke-opacity=".9" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="white" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h1>Black Castle</h1>
+              <p>Irish traditional instruments</p>
+            </div>
+          </div>
+
+          <div class="hero">
+            <h2><span class="accent">Coming soon</span>.</h2>
+            <p class="subtitle">
+              Handmade Irish traditional instruments — built with care in Wicklow.
+              A small workshop, a serious obsession with tone, and a love of the tunes.
+            </p>
+
+            <div class="pillrow" aria-label="Highlights">
+              <div class="pill"><span class="dot" aria-hidden="true"></span>Handmade in Wicklow</div>
+              <div class="pill"><span class="dot" aria-hidden="true"></span>Small-batch builds</div>
+              <div class="pill"><span class="dot" aria-hidden="true"></span>Traditional sound, modern reliability</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side" aria-label="Notify me panel">
+          <h3>Get notified</h3>
+          <p class="info">
+            Want a ping when the site launches (and when the first builds are ready)?
+            Drop your email and I’ll send a short update — no spam.
+          </p>
+
+          <form class="form" id="notifyForm">
+            <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <button class="btn" type="submit">Notify me</button>
+          </form>
+
+          <div class="links" aria-label="Contact links">
+            <!-- Replace these with your real handles later -->
+            <span>Or:</span>
+            <a href="#" id="emailLink">Email</a>
+            <a href="#" title="Add Instagram later">Instagram</a>
+            <a href="#" title="Add YouTube later">YouTube</a>
+          </div>
+
+          <div class="footer" aria-label="Footer">
+            <div class="tiny"><span class="flag" aria-hidden="true"></span> Wicklow, Ireland</div>
+            <div class="tiny">© <span id="year"></span> Black Castle</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Set year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mailto notifier (no backend needed)
+    const form = document.getElementById("notifyForm");
+    const emailInput = document.getElementById("email");
+    const emailLink = document.getElementById("emailLink");
+
+    // Change this to your real inbox later
+    const TO_EMAIL = "hello@blackcastle.ie";
+    const SUBJECT = "Black Castle — notify me";
+    const BASE_BODY = "Hi Black Castle,%0D%0A%0D%0APlease notify me when the site launches.%0D%0A%0D%0AThanks!%0D%0A";
+
+    function openMailto(userEmail){
+      const body = BASE_BODY + "%0D%0AEmail: " + encodeURIComponent(userEmail || "");
+      const href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${body}`;
+      window.location.href = href;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      openMailto(emailInput.value.trim());
+    });
+
+    emailLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      openMailto(emailInput.value.trim());
+    });
+  </script>
+</body>
+</html>

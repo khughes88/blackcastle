@@ -593,3 +593,27 @@ footer .row {
     border-top: 1px solid var(--line);
     padding-top: 16px;
 }
+
+/* FORCE lede images to render on mobile */
+.storyMedia{
+  display:block;
+  min-height:120px;
+}
+
+@media (max-width: 700px){
+  .storyRow{
+    flex-direction:row;      /* keep side-by-side */
+    align-items:flex-start;
+  }
+
+  .storyMedia{
+    flex:0 0 96px;
+    height:96px;
+    min-height:96px;         /* <-- critical */
+    border-radius:4px;
+  }
+
+  .storyText{
+    font-size:14px;
+  }
+}

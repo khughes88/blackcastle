@@ -258,15 +258,15 @@ header {
 
 @media (max-width: 600px) {
     .nav {
-        height: 62px;
+        height: 72px;
     }
 
     .site-logo {
-        height: 34px;
+        height: 64px;
     }
 
     .logo {
-        max-width: calc(100vw - 80px);
+        max-width: calc(100vw - 92px);
     }
 }
 

@@ -74,16 +74,7 @@
       <img src="bc2.png" alt="Black Castle instrument 2">
     </div>
 
-    <script>
-      const slides = document.querySelectorAll('.heroCarousel img');
-      let index = 0;
-
-      setInterval(() => {
-        slides[index].classList.remove('active');
-        index = (index + 1) % slides.length;
-        slides[index].classList.add('active');
-      }, 6000); // 4 seconds per image
-    </script>
+   
 
     <div class="heroTitle">
 
@@ -224,6 +215,17 @@
       });
     });
   </script>
+
+   <script>
+      const slides = document.querySelectorAll('.heroCarousel img');
+      let index = 0;
+
+      setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+      }, 6000); // 4 seconds per image
+    </script>
 
   <!--
     HOW TO ADD A REAL HERO IMAGE:

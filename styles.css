@@ -256,18 +256,16 @@ header {
     }
 }
 
-@media (max-width: 600px) {
-    .nav {
-        height: 72px;
-    }
+.nav{
+  height: clamp(62px, 10vw, 82px);
+}
 
-    .site-logo {
-        height: 64px;
-    }
+.site-logo{
+  height: clamp(44px, 8vw, 56px);
+}
 
-    .logo {
-        max-width: calc(100vw - 92px);
-    }
+@media (max-width: 960px){
+  .logo{ max-width: calc(100vw - 92px); }
 }
 
 /* ---------------------------

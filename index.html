@@ -2,361 +2,542 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Black Castle Irish Traditional Instruments — Coming soon. Handmade in Wicklow." />
-  <title>Black Castle — Irish Traditional Instruments (Coming Soon)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Black Castle — Irish traditional instruments. Handmade in Wicklow. Coming soon." />
+  <title>Black Castle — Irish Traditional Instruments</title>
 
   <style>
     :root{
-      --bg: #07080b;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --line: rgba(255,255,255,.14);
-      --accent: #c8a15a; /* warm brass/gold */
-      --accent2:#63d6c5; /* subtle teal */
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius: 22px;
+      --ink:#1b1b1b;
+      --muted:#6b6b6b;
+      --line:#e7e7e7;
+      --bg:#ffffff;
+      --green:#2f5b2f;     /* Deering-ish strap colour */
+      --green2:#224422;
+      --max:1180px;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 15% 10%, rgba(200,161,90,.20), transparent 60%),
-                  radial-gradient(900px 500px at 85% 20%, rgba(99,214,197,.14), transparent 60%),
-                  radial-gradient(1100px 700px at 50% 100%, rgba(255,255,255,.05), transparent 55%),
-                  var(--bg);
-      overflow-x:hidden;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Top utility bar */
+    .topbar{
+      border-bottom:1px solid var(--line);
+      font-size:13px;
+      color:var(--muted);
+      background:#fff;
+    }
+    .topbar .row{
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .topbar .right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:28px; height:28px;
+      border:1px solid var(--line);
+      border-radius:4px; /* subtle, not “rounded cards” */
+      color:var(--muted);
+      font-size:14px;
     }
 
-    /* Soft animated grain */
-    .grain{
-      pointer-events:none;
-      position:fixed;
+    /* Main nav */
+    header{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .nav{
+      height:72px;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items:center;
+      gap:10px;
+    }
+    .navlinks{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:14px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:#2b2b2b;
+      flex-wrap:wrap;
+    }
+    .navlinks a{
+      padding:10px 0;
+      border-bottom:2px solid transparent;
+    }
+    .navlinks a:hover{
+      border-bottom-color: var(--green);
+    }
+
+    .logo{
+      text-align:center;
+      line-height:1.05;
+    }
+    .logo .name{
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:18px;
+    }
+    .logo .tag{
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .navright{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:12px;
+    }
+
+    /* Mobile menu */
+    .burger{
+      display:none;
+      border:1px solid var(--line);
+      background:#fff;
+      width:40px; height:40px;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    .burger span{
+      display:block;
+      width:18px; height:2px;
+      background:#333;
+      margin:4px auto;
+    }
+    .mobilePanel{
+      display:none;
+      border-top:1px solid var(--line);
+      background:#fff;
+    }
+    .mobilePanel a{
+      display:block;
+      padding:14px 18px;
+      border-bottom:1px solid var(--line);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:14px;
+    }
+
+    @media (max-width: 960px){
+      .nav{
+        grid-template-columns: auto 1fr auto;
+      }
+      .navlinks{display:none}
+      .burger{display:inline-block}
+      .logo{justify-self:center}
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      background:#111; /* fallback */
+      overflow:hidden;
+    }
+    .heroImg{
+      width:100%;
+      height: clamp(260px, 42vw, 520px);
+      background:
+        /* Replace this with your own image later */
+        linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.10)),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 45%),
+        radial-gradient(circle at 70% 60%, rgba(0,0,0,.35), transparent 55%),
+        linear-gradient(120deg, #222, #111);
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05);
+    }
+
+    /* Strapline bar across the hero */
+    .strap{
+      position:absolute;
+      left:0; right:0;
+      top:0;
+      background: linear-gradient(90deg, var(--green2), var(--green));
+      color:#fff;
+      text-align:center;
+      font-size:13px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      padding:10px 12px;
+    }
+
+    /* Big centered overlay title */
+    .heroTitle{
+      position:absolute;
       inset:0;
-      opacity:.08;
-      mix-blend-mode: overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      animation: drift 8s linear infinite;
-    }
-    @keyframes drift{
-      from{transform:translate3d(0,0,0)}
-      to{transform:translate3d(-2%,1%,0)}
-    }
-
-    .wrap{
-      min-height:100%;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: clamp(22px, 4vw, 54px);
+      padding: 22px;
+      text-align:center;
     }
-
-    .card{
-      width:min(980px, 100%);
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
-    /* top accent line */
-    .card::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(200,161,90,.85), rgba(99,214,197,.75), transparent);
-      opacity:.9;
-    }
-
-    .inner{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: clamp(18px, 3vw, 34px);
-      padding: clamp(22px, 4vw, 42px);
-    }
-
-    @media (max-width: 880px){
-      .inner{grid-template-columns:1fr}
-    }
-
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-
-    .mark{
-      width:46px; height:46px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(200,161,90,.35), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(99,214,197,.20), transparent 60%),
-        rgba(255,255,255,.04);
-      display:grid;
-      place-items:center;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-
-    .mark svg{opacity:.92}
-    .brand h1{
+    .heroTitle h1{
       margin:0;
-      font-size: 18px;
-      letter-spacing:.12em;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.08em;
       text-transform:uppercase;
-      font-weight:700;
-    }
-    .brand p{
-      margin:3px 0 0;
-      color:var(--muted);
-      font-size: 13px;
-      letter-spacing:.05em;
+      font-size: clamp(22px, 3.2vw, 44px);
+      text-shadow: 0 2px 20px rgba(0,0,0,.55);
     }
 
-    .hero{
+    /* Content */
+    main{
+      padding: 34px 0 54px;
+    }
+    .lede{
+      font-size:16px;
+      color:#2b2b2b;
+      max-width: 80ch;
+    }
+    .lede p{
+      margin: 0 0 16px;
+    }
+
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin: 26px 0;
+    }
+
+    /* Simple “columns” like a product area, but not boxes */
+    .cols{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
       margin-top: 18px;
     }
-    .hero h2{
+    @media (max-width: 900px){
+      .cols{grid-template-columns:1fr}
+    }
+    .col h3{
       margin:0 0 10px;
-      font-size: clamp(34px, 4.4vw, 54px);
-      line-height:1.04;
-      letter-spacing:-.02em;
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
-    .hero h2 .accent{
-      background: linear-gradient(90deg, var(--accent), rgba(255,255,255,.92));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
+    .col p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:14px;
     }
-    .hero .subtitle{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: clamp(15px, 1.55vw, 18px);
-      line-height:1.6;
-      max-width: 58ch;
+    .link{
+      color: var(--green);
+      text-transform:uppercase;
+      letter-spacing:.10em;
+      font-size:12px;
+      border-bottom:1px solid transparent;
+      padding-bottom:2px;
+      display:inline-block;
     }
+    .link:hover{border-bottom-color: var(--green)}
 
-    .pillrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 16px;
+    /* Newsletter strip (simple, flat) */
+    .signup{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding: 18px 0;
+      background:#fafafa;
+      margin-top: 30px;
     }
-    .pill{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      padding:9px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--muted);
+    .signup .row{
       display:flex;
-      gap:8px;
       align-items:center;
-      white-space:nowrap;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
     }
-    .dot{
-      width:8px; height:8px;
-      border-radius:99px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(200,161,90,.12);
+    .signup h4{
+      margin:0;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:14px;
     }
-
-    .side{
+    .signup span{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .form{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    input{
+      height:42px;
+      padding:0 12px;
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border-radius: calc(var(--radius) - 6px);
-      padding: 18px;
-      position:relative;
+      border-radius:4px;
+      font-size:14px;
+      min-width: min(360px, 75vw);
     }
-    .side h3{
-      margin: 2px 0 10px;
-      font-size: 14px;
+    button{
+      height:42px;
+      padding: 0 14px;
+      border:1px solid var(--green);
+      background: var(--green);
+      color:#fff;
+      border-radius:4px;
       letter-spacing:.10em;
       text-transform:uppercase;
-      color: rgba(255,255,255,.82);
-    }
-
-    .info{
-      margin:0;
-      color: var(--muted);
-      line-height:1.6;
-      font-size: 14px;
-    }
-
-    .form{
-      margin-top: 14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .form input{
-      flex: 1 1 220px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.25);
-      padding: 12px 12px;
-      color: var(--text);
-      outline:none;
-    }
-    .form input::placeholder{color: rgba(255,255,255,.45)}
-    .btn{
-      flex: 0 0 auto;
-      border-radius: 14px;
-      border: 1px solid rgba(200,161,90,.45);
-      background: linear-gradient(180deg, rgba(200,161,90,.22), rgba(200,161,90,.10));
-      padding: 12px 14px;
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing:.02em;
+      font-size:12px;
       cursor:pointer;
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      transition: transform .12s ease, border-color .12s ease;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(200,161,90,.75)}
-    .btn:active{transform: translateY(0px)}
+    button:hover{background: var(--green2); border-color: var(--green2);}
 
-    .links{
-      margin-top: 14px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
+    footer{
+      padding: 26px 0 38px;
       color: var(--muted);
-      font-size: 13px;
+      font-size:13px;
     }
-    .links a{
-      color: rgba(255,255,255,.78);
-      text-decoration:none;
-      border-bottom:1px dashed rgba(255,255,255,.22);
-    }
-    .links a:hover{border-bottom-color: rgba(200,161,90,.65); color: var(--text)}
-
-    .footer{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
+    footer .row{
       display:flex;
       justify-content:space-between;
-      gap:10px;
+      gap:12px;
       flex-wrap:wrap;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-    }
-    .tiny{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-    .flag{
-      width:10px;height:10px;border-radius:99px;
-      background: linear-gradient(90deg, #169b62 0 33%, #fff 33% 66%, #ff883e 66% 100%);
-      border:1px solid rgba(255,255,255,.20);
+      border-top:1px solid var(--line);
+      padding-top: 16px;
     }
   </style>
 </head>
 
 <body>
-  <div class="grain" aria-hidden="true"></div>
+  <!-- Top utility bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div>Handmade in Wicklow • <span style="color:#3a3a3a;">Coming soon</span></div>
+        <div class="right">
+          <div>Call / WhatsApp: <strong style="color:#3a3a3a;">+353 …</strong></div>
+          <a class="icon" href="#" title="Instagram">⌁</a>
+          <a class="icon" href="#" title="Facebook">f</a>
+          <a class="icon" href="#" title="YouTube">▶</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <main class="wrap">
-    <section class="card" role="region" aria-label="Black Castle Coming Soon">
-      <div class="inner">
-        <div>
-          <div class="brand">
-            <div class="mark" aria-hidden="true">
-              <!-- Simple “castle-ish” mark -->
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 10V6h3v2h6V6h3v4" stroke="white" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M5 10h14v10H5V10Z" stroke="white" stroke-opacity=".9" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M10 20v-5a2 2 0 0 1 4 0v5" stroke="white" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h1>Black Castle</h1>
-              <p>Irish traditional instruments</p>
-            </div>
-          </div>
+  <!-- Nav -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <nav class="navlinks" aria-label="Primary left">
+          <a href="#instruments">Instruments</a>
+          <a href="#accessories">Accessories</a>
+          <a href="#repairs">Repairs</a>
+        </nav>
 
-          <div class="hero">
-            <h2><span class="accent">Coming soon</span>.</h2>
-            <p class="subtitle">
-              Handmade Irish traditional instruments — built with care in Wicklow
-            </p>
+        <a class="logo" href="#top" aria-label="Black Castle home">
+          <div class="name">Black Castle</div>
+          <div class="tag">Irish Traditional Instruments</div>
+        </a>
 
-            <div class="pillrow" aria-label="Highlights">
-              <div class="pill"><span class="dot" aria-hidden="true"></span>Handmade in Wicklow</div>
-              <div class="pill"><span class="dot" aria-hidden="true"></span>Small-batch builds</div>
-              <div class="pill"><span class="dot" aria-hidden="true"></span>Traditional sound, modern reliability</div>
-            </div>
-          </div>
+        <div class="navright">
+          <nav class="navlinks" aria-label="Primary right" style="justify-content:flex-end;">
+            <a href="#story">Our Story</a>
+            <a href="#contact">Contact</a>
+            <a href="#signup">Notify</a>
+          </nav>
+
+          <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobilePanel" id="mobilePanel" aria-label="Mobile menu">
+      <a href="#instruments">Instruments</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#repairs">Repairs</a>
+      <a href="#story">Our Story</a>
+      <a href="#contact">Contact</a>
+      <a href="#signup">Notify</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="strap">Handmade in Wicklow • Coming soon</div>
+    <div class="heroImg" id="heroImg" role="img" aria-label="Black Castle hero image"></div>
+    <div class="heroTitle">
+      <h1>Black Castle Irish Traditional Instruments</h1>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main>
+    <div class="container">
+      <div class="lede">
+        <p>
+          Black Castle is a small Wicklow workshop focused on Irish traditional instruments and the details that matter:
+          stable tuning, comfortable feel, and a sound that sits right in a session.
+        </p>
+        <p>
+          The website is launching soon with a small selection of builds, parts and services. If you want a ping when it
+          goes live, pop your email into the notify box below.
+        </p>
+      </div>
+
+      <div class="divider"></div>
+
+      <section class="cols" aria-label="Sections">
+        <div class="col" id="instruments">
+          <h3>Instruments</h3>
+          <p>Small-batch builds and custom work.</p>
+          <a class="link" href="#signup">Notify me</a>
         </div>
 
-        <aside class="side" aria-label="Notify me panel">
-          <h3>Get notified</h3>
-          <p class="info">
-            Want a ping when the site launches (and when the first builds are ready)?
-            Drop your email and I’ll send a short update — no spam.
-          </p>
+        <div class="col" id="accessories">
+          <h3>Accessories</h3>
+          <p>Workshop-made parts and sensible upgrades.</p>
+          <a class="link" href="#contact">Ask a question</a>
+        </div>
 
-          <form class="form" id="notifyForm">
-            <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
-            <button class="btn" type="submit">Notify me</button>
-          </form>
+        <div class="col" id="repairs">
+          <h3>Repairs & Setup</h3>
+          <p>Dial-in work: action, intonation, stability.</p>
+          <a class="link" href="#contact">Get in touch</a>
+        </div>
+      </section>
 
-          <div class="links" aria-label="Contact links">
-            <!-- Replace these with your real handles later -->
-            <span>Or:</span>
-            <a href="#" id="emailLink">Email</a>
-            <a href="#" title="Add Instagram later">Instagram</a>
-            <a href="#" title="Add YouTube later">YouTube</a>
+      <section class="lede" id="story" style="margin-top:26px;">
+        <h2 style="margin:0 0 10px; letter-spacing:.12em; text-transform:uppercase; font-size:16px;">Our Story</h2>
+        <p style="margin:0; color:var(--muted);">
+          A small independent workshop in Wicklow, Ireland — built around trad music, good materials, and
+          instruments made to be played.
+        </p>
+      </section>
+
+      <section class="signup" id="signup" aria-label="Notify me">
+        <div class="container" style="padding:0;">
+          <div class="row">
+            <div>
+              <h4>Notify me when it launches</h4>
+              <span>One email. No spam.</span>
+            </div>
+
+            <form class="form" id="notifyForm">
+              <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              <button type="submit">Notify</button>
+            </form>
           </div>
+        </div>
+      </section>
 
-          <div class="footer" aria-label="Footer">
-            <div class="tiny"><span class="flag" aria-hidden="true"></span> Wicklow, Ireland</div>
-            <div class="tiny">© <span id="year"></span> Black Castle</div>
-          </div>
-        </aside>
-      </div>
-    </section>
+      <section class="lede" id="contact" style="margin-top:26px;">
+        <h2 style="margin:0 0 10px; letter-spacing:.12em; text-transform:uppercase; font-size:16px;">Contact</h2>
+        <p style="margin:0 0 10px; color:var(--muted);">
+          Replace this with your real email/phone when ready.
+        </p>
+        <p style="margin:0;">
+          Email: <a class="link" href="#" id="emailLink">hello@blackcastle.ie</a>
+        </p>
+      </section>
+    </div>
   </main>
 
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div>© <span id="year"></span> Black Castle • Wicklow, Ireland</div>
+        <div>Handmade Irish traditional instruments</div>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    // Set year
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mailto notifier (no backend needed)
-    const form = document.getElementById("notifyForm");
-    const emailInput = document.getElementById("email");
-    const emailLink = document.getElementById("emailLink");
+    // Mobile menu
+    const burger = document.getElementById("burger");
+    const panel = document.getElementById("mobilePanel");
+    burger.addEventListener("click", () => {
+      const open = panel.style.display === "block";
+      panel.style.display = open ? "none" : "block";
+      burger.setAttribute("aria-expanded", String(!open));
+    });
+    panel.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        panel.style.display = "none";
+        burger.setAttribute("aria-expanded", "false");
+      });
+    });
 
-    // Change this to your real inbox later
-    const TO_EMAIL = "hello@blackcastle.ie";
+    // Mailto notify (no backend)
+    const TO_EMAIL = "hello@blackcastle.ie";  // change later
     const SUBJECT = "Black Castle — notify me";
-    const BASE_BODY = "Hi Black Castle,%0D%0A%0D%0APlease notify me when the site launches.%0D%0A%0D%0AThanks!%0D%0A";
+    const BODY = "Hi Black Castle,%0D%0A%0D%0APlease notify me when the site launches.%0D%0A%0D%0AThanks!%0D%0A";
 
     function openMailto(userEmail){
-      const body = BASE_BODY + "%0D%0AEmail: " + encodeURIComponent(userEmail || "");
-      const href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${body}`;
-      window.location.href = href;
+      const body = BODY + "%0D%0AEmail: " + encodeURIComponent(userEmail || "");
+      window.location.href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${body}`;
     }
 
-    form.addEventListener("submit", (e) => {
+    document.getElementById("notifyForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      openMailto(emailInput.value.trim());
+      const email = document.getElementById("email").value.trim();
+      openMailto(email);
     });
 
-    emailLink.addEventListener("click", (e) => {
+    document.getElementById("emailLink").addEventListener("click", (e) => {
       e.preventDefault();
-      openMailto(emailInput.value.trim());
+      const email = document.getElementById("email").value.trim();
+      openMailto(email);
+    });
+
+    // Optional: smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth"});
+      });
     });
   </script>
+
+  <!--
+    HOW TO ADD A REAL HERO IMAGE:
+
+    1) Put an image in your repo, e.g. /assets/hero.jpg
+    2) Replace the .heroImg background in CSS with:
+
+      background:
+        linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.10)),
+        url("assets/hero.jpg");
+
+    That’s it. No JS needed.
+  -->
 </body>
 </html>

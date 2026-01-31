@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,167 +8,207 @@
   <title>Black Castle — Irish Traditional Instruments</title>
 
   <style>
-    :root{
-      --ink:#1b1b1b;
-      --muted:#6b6b6b;
-      --line:#e7e7e7;
-      --bg:#ffffff;
-      --green:#2f5b2f;     /* Deering-ish strap colour */
-      --green2:#224422;
-      --max:1180px;
+    :root {
+      --ink: #1b1b1b;
+      --muted: #6b6b6b;
+      --line: #e7e7e7;
+      --bg: #ffffff;
+      --green: #2f5b2f;
+      /* Deering-ish strap colour */
+      --green2: #224422;
+      --max: 1180px;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--ink);
-      background:var(--bg);
-      line-height:1.55;
+    * {
+      box-sizing: border-box
     }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px
+    }
 
     /* Top utility bar */
-    .topbar{
-      border-bottom:1px solid var(--line);
-      font-size:13px;
-      color:var(--muted);
-      background:#fff;
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      background: #fff;
     }
-    .topbar .row{
-      height:40px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+
+    .topbar .row {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
-    .topbar .right{
-      display:flex;
-      align-items:center;
-      gap:12px;
+
+    .topbar .right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .icon{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:28px; height:28px;
-      border:1px solid var(--line);
-      border-radius:4px; /* subtle, not “rounded cards” */
-      color:var(--muted);
-      font-size:14px;
+
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      /* subtle, not “rounded cards” */
+      color: var(--muted);
+      font-size: 14px;
     }
 
     /* Main nav */
-    header{
-      background:#fff;
-      border-bottom:1px solid var(--line);
-      position:sticky;
-      top:0;
-      z-index:50;
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    .nav{
-      height:72px;
-      display:grid;
+
+    .nav {
+      height: 92px;
+      display: grid;
       grid-template-columns: 1fr auto 1fr;
-      align-items:center;
-      gap:10px;
+      align-items: center;
+      gap: 10px;
     }
-    .navlinks{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      font-size:14px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:#2b2b2b;
-      flex-wrap:wrap;
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 14px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: #2b2b2b;
+      flex-wrap: wrap;
     }
-    .navlinks a{
-      padding:10px 0;
-      border-bottom:2px solid transparent;
+
+    .navlinks a {
+      padding: 10px 0;
+      border-bottom: 2px solid transparent;
     }
-    .navlinks a:hover{
+
+    .navlinks a:hover {
       border-bottom-color: var(--green);
     }
 
-    .logo{
-      text-align:center;
-      line-height:1.05;
-    }
-    .logo .name{
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:18px;
-    }
-    .logo .tag{
-      font-size:12px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-top:6px;
+    .logo {
+      text-align: center;
+      line-height: 1.05;
     }
 
-    .navright{
-      display:flex;
-      justify-content:flex-end;
-      align-items:center;
-      gap:12px;
+    .logo .name {
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+
+    .logo .tag {
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .navright {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
     }
 
     /* Mobile menu */
-    .burger{
-      display:none;
-      border:1px solid var(--line);
-      background:#fff;
-      width:40px; height:40px;
-      border-radius:4px;
-      cursor:pointer;
-    }
-    .burger span{
-      display:block;
-      width:18px; height:2px;
-      background:#333;
-      margin:4px auto;
-    }
-    .mobilePanel{
-      display:none;
-      border-top:1px solid var(--line);
-      background:#fff;
-    }
-    .mobilePanel a{
-      display:block;
-      padding:14px 18px;
-      border-bottom:1px solid var(--line);
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:14px;
+    .burger {
+      display: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
-    @media (max-width: 960px){
-      .nav{
+    .burger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #333;
+      margin: 4px auto;
+    }
+
+    .mobilePanel {
+      display: none;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .mobilePanel a {
+      display: block;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .nav {
         grid-template-columns: auto 1fr auto;
       }
-      .navlinks{display:none}
-      .burger{display:inline-block}
-      .logo{justify-self:center}
+
+      .navlinks {
+        display: none
+      }
+
+      .burger {
+        display: inline-block
+      }
+
+      .logo {
+        justify-self: center
+      }
     }
 
     /* Hero */
-    .hero{
-      position:relative;
-      background:#111; /* fallback */
-      overflow:hidden;
+    .hero {
+      position: relative;
+      background: #111;
+      /* fallback */
+      overflow: hidden;
     }
-    .heroImg{
-      width:100%;
+
+    .heroImg {
+      width: 100%;
       height: clamp(260px, 42vw, 520px);
       background:
         /* Replace this with your own image later */
-        linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.10)),
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 45%),
-        radial-gradient(circle at 70% 60%, rgba(0,0,0,.35), transparent 55%),
+        linear-gradient(0deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .10)),
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .18), transparent 45%),
+        radial-gradient(circle at 70% 60%, rgba(0, 0, 0, .35), transparent 55%),
         linear-gradient(120deg, #222, #111);
       background-size: cover;
       background-position: center;
@@ -175,156 +216,244 @@
     }
 
     /* Strapline bar across the hero */
-    .strap{
-      position:absolute;
-      left:0; right:0;
-      top:0;
+    .strap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
       background: linear-gradient(90deg, var(--green2), var(--green));
-      color:#fff;
-      text-align:center;
-      font-size:13px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      padding:10px 12px;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 10px 12px;
     }
 
     /* Big centered overlay title */
-    .heroTitle{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .heroTitle {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 22px;
-      text-align:center;
+      text-align: center;
     }
-    .heroTitle h1{
-      margin:0;
-      color:#fff;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+
+    .heroTitle h1 {
+      margin: 0;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       font-size: clamp(22px, 3.2vw, 44px);
-      text-shadow: 0 2px 20px rgba(0,0,0,.55);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, .55);
     }
 
     /* Content */
-    main{
+    main {
       padding: 34px 0 54px;
     }
-    .lede{
-      font-size:16px;
-      color:#2b2b2b;
+
+    .lede {
+      font-size: 16px;
+      color: #2b2b2b;
       max-width: 80ch;
     }
-    .lede p{
+
+    .lede p {
       margin: 0 0 16px;
     }
 
-    .divider{
-      height:1px;
-      background:var(--line);
+    .divider {
+      height: 1px;
+      background: var(--line);
       margin: 26px 0;
     }
 
     /* Simple “columns” like a product area, but not boxes */
-    .cols{
-      display:grid;
+    .cols {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 26px;
       margin-top: 18px;
     }
-    @media (max-width: 900px){
-      .cols{grid-template-columns:1fr}
+
+    @media (max-width: 900px) {
+      .cols {
+        grid-template-columns: 1fr
+      }
     }
-    .col h3{
-      margin:0 0 10px;
-      font-size:14px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+
+    .col h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
-    .col p{
-      margin:0 0 10px;
-      color:var(--muted);
-      font-size:14px;
+
+    .col p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
     }
-    .link{
+
+    .link {
       color: var(--green);
-      text-transform:uppercase;
-      letter-spacing:.10em;
-      font-size:12px;
-      border-bottom:1px solid transparent;
-      padding-bottom:2px;
-      display:inline-block;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      font-size: 12px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      display: inline-block;
     }
-    .link:hover{border-bottom-color: var(--green)}
+
+    .link:hover {
+      border-bottom-color: var(--green)
+    }
 
     /* Newsletter strip (simple, flat) */
-    .signup{
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+    .signup {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       padding: 18px 0;
-      background:#fafafa;
+      background: #fafafa;
       margin-top: 30px;
     }
-    .signup .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+
+    .signup .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
     }
-    .signup h4{
-      margin:0;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:14px;
+
+    .signup h4 {
+      margin: 0;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 14px;
     }
-    .signup span{
-      color:var(--muted);
-      font-size:13px;
+
+    .signup span {
+      color: var(--muted);
+      font-size: 13px;
     }
-    .form{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
+
+    .form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    input{
-      height:42px;
-      padding:0 12px;
-      border:1px solid var(--line);
-      border-radius:4px;
-      font-size:14px;
+
+    input {
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 14px;
       min-width: min(360px, 75vw);
     }
-    button{
-      height:42px;
-      padding: 0 14px;
-      border:1px solid var(--green);
-      background: var(--green);
-      color:#fff;
-      border-radius:4px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-size:12px;
-      cursor:pointer;
-    }
-    button:hover{background: var(--green2); border-color: var(--green2);}
 
-    footer{
+    button {
+      height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: #fff;
+      border-radius: 4px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--green2);
+      border-color: var(--green2);
+    }
+
+    footer {
       padding: 26px 0 38px;
       color: var(--muted);
-      font-size:13px;
+      font-size: 13px;
     }
-    footer .row{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      border-top:1px solid var(--line);
+
+    footer .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
       padding-top: 16px;
     }
+
+.hero{
+  position: relative;
+  height: clamp(260px, 42vw, 520px);
+  width: 100vw;                 /* full viewport width */
+  overflow: hidden;             /* crop anything outside */
+  margin: 0;                    /* no gaps */
+  background: #111;             /* safety fallback */
+}
+
+/* This is the key: the image is forced to fill the hero */
+.heroImg{
+  position: absolute;
+  inset: 0;                     /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* crop top/bottom as needed */
+  object-position: center;      /* tweak later if needed */
+  display: block;
+}
+
+/* Optional overlay darken like the reference */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.12));
+  pointer-events:none;
+}
+
+.strap{
+  position:absolute;
+  left:0; right:0;
+  top:0;
+  z-index: 3;
+  background: #2f5b2f;
+  color:#fff;
+  text-align:center;
+  font-size:13px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  padding:10px 12px;
+}
+
+.heroTitle{
+  position:absolute;
+  inset:0;
+  z-index: 4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 22px;
+  text-align:center;
+}
+
+.heroTitle h1{
+  margin:0;
+  color:#fff;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size: clamp(22px, 3.2vw, 44px);
+  text-shadow: 0 2px 20px rgba(0,0,0,.55);
+}
   </style>
 </head>
 
@@ -355,8 +484,8 @@
         </nav>
 
         <a class="logo" href="#top" aria-label="Black Castle home">
-          <div class="name">Black Castle</div>
-          <div class="tag">Irish Traditional Instruments</div>
+         <img src="bclogo.png" alt="Black Castle logo" style="height:120px; overflow:hidden; display:block; margin:0 auto 6px;" />
+ 
         </a>
 
         <div class="navright">
@@ -385,13 +514,14 @@
 
   <!-- Hero -->
   <section class="hero" id="top">
-    <div class="strap">Handmade in Wicklow • Coming soon</div>
-    <div class="heroImg" id="heroImg" role="img" aria-label="Black Castle hero image"></div>
-    <div class="heroTitle">
-      <h1>Black Castle Irish Traditional Instruments</h1>
-    </div>
-  </section>
+  <div class="strap">HANDMADE IN WICKLOW • COMING SOON</div>
 
+  <img class="heroImg" src="bc.jpg" alt="Black Castle hero image">
+
+  <div class="heroTitle">
+    <h1>BLACK CASTLE IRISH TRADITIONAL INSTRUMENTS</h1>
+  </div>
+</section>
   <!-- Content -->
   <main>
     <div class="container">
@@ -497,7 +627,7 @@
     const SUBJECT = "Black Castle — notify me";
     const BODY = "Hi Black Castle,%0D%0A%0D%0APlease notify me when the site launches.%0D%0A%0D%0AThanks!%0D%0A";
 
-    function openMailto(userEmail){
+    function openMailto(userEmail) {
       const body = BODY + "%0D%0AEmail: " + encodeURIComponent(userEmail || "");
       window.location.href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${body}`;
     }
@@ -522,7 +652,7 @@
         const el = document.querySelector(id);
         if (!el) return;
         e.preventDefault();
-        el.scrollIntoView({behavior:"smooth"});
+        el.scrollIntoView({ behavior: "smooth" });
       });
     });
   </script>
@@ -540,4 +670,5 @@
     That’s it. No JS needed.
   -->
 </body>
+
 </html>
